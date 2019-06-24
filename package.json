@@ -1,0 +1,27 @@
+{
+  "name": "owne",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mr-redFox/owne.git"
+  },
+  "keywords": [],
+  "author": "Pidluzhnyy Bohdan (RedFox)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mr-redFox/owne/issues"
+  },
+  "homepage": "https://github.com/mr-redFox/owne#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "path": "^0.12.7"
+  }
+}
