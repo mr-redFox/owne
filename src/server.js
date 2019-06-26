@@ -5,6 +5,9 @@ const bodyParser = require('body-parser');
 // init express
 const app = express();
 
+// setup app
+app.set('view engine', 'hbs');
+
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
