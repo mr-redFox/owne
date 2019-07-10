@@ -2,6 +2,10 @@ const app = require('express').Router();
 const { sendError } = require('../utils/response');
 const User = require('../models/user');
 
+const printUsers = (res, users) => {
+    res.render('users', { users });
+}
+
 app.get('/', (req, res) => {
     
     res.render('main', {
@@ -10,10 +14,12 @@ app.get('/', (req, res) => {
 });
 
 app.get('/users', (req, res) => {
-    const users = User.find({});
-    console.log(users);
 
-    res.end();
+    User
+    .find({})
+    .then(data => printUsers(res, data))
+    .catch(err => sendError(res, err, 404));
+    
 });
 
 app.post('/signup', (req, res) => {
