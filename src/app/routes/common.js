@@ -1,23 +1,37 @@
 const app = require('express').Router();
-const { handleError } = require('../utils/errors');
-
-const users = [];
+const { sendError } = require('../utils/response');
+const User = require('../models/user');
 
 app.get('/', (req, res) => {
     
     res.render('main', {
-        section: 'Sign in section'
+        section: 'Register user'
     });
 });
 
-app.post('/signin', (req, res) => {
+app.get('/users', (req, res) => {
+    const users = User.find({});
+    console.log(users);
+
+    res.end();
+});
+
+app.post('/signup', (req, res) => {
     const {email, pass} = req.body;
 
-    if(email != 'upp')
-        handleError(res, {type: 'email', resason: 'Not valid'}, 401);
+    const user = new User({
+        email,
+        pass,
+        pressets: [{
+            name: 'super presset',
+            date: Date.now()
+        }],
+        active: true
+    });
 
-    users.push({email, pass});
-    res.send('success');
+    user.save();
+
+    return res.redirect('/');
 })
 
 module.exports = app;
